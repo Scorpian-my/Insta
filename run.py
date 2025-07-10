@@ -135,14 +135,14 @@ for idx, username in enumerate(usernames, 1):
         main_window = driver.current_window_handle
         before_windows = set(driver.window_handles)
         search_btn.click()
-        time.sleep(2)
+        time.sleep(1)
         after_windows = set(driver.window_handles)
         new_windows = after_windows - before_windows
         for win in new_windows:
             driver.switch_to.window(win)
             driver.close()
         driver.switch_to.window(main_window)
-        time.sleep(5)
+        time.sleep(3)
         # اضافه کردن منطق کلیک روی دکمه استوری
         try:
             stories_button = wait.until(
@@ -151,7 +151,7 @@ for idx, username in enumerate(usernames, 1):
             driver.execute_script("arguments[0].scrollIntoView(true);", stories_button)
             time.sleep(1)
             driver.execute_script("arguments[0].click();", stories_button)
-            time.sleep(5)
+            time.sleep(2)
         except Exception as e:
             # اگر دکمه استوری نبود، ادامه بده (مثلاً کاربر استوری ندارد)
             pass
